@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="carousel-slide">
+        <div class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item fadeIn active">
+                    <img class="img-fluid" src="images/charles-deluvio.jpg" alt="First Slide">
+                    <div class="title-and-descriptions">
+                        <h2 class="title hightlight">Never lose the best parts of articles</h2>
+                        <p class="descriptions">Highlight your favourite parts of articles and keep then in one place.</p>
+                    </div>
+                </div>
+
+                <div class="carousel-item fadeIn">
+                    <img class="img-fluid" src="images/fabio-spinelli.jpg" alt="Second Slide">
+                    <div class="title-and-descriptions">
+                        <h2 class="title"><span class="hightlight">Never lose</span> the best parts of articles</h2>
+                        <p class="descriptions">Highlight your favourite parts of articles and keep then in one place.</p>
+                    </div>
+                </div>
+
+                <div class="carousel-item fadeIn">
+                    <img class="img-fluid" src="images/you-x-ventures.jpg" alt="Third Slide">
+                    <div class="title-and-descriptions">
+                        <h2 class="title"><span class="hightlight">Never lose</span> the best parts of articles</h2>
+                        <p class="descriptions">Highlight your favourite parts of articles and keep then in one place.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row page-indicator">
+                <div class="col-sm-2 col-md-2">
+                    <a href="./login.html">Skip</a>
+                </div>
+                <div class="col-sm-8 col-md-8">
+                    <div class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carousel"></li>
+                            <li data-target="#carousel"></li>
+                            <li data-target="#carousel"></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $('.carousel').carousel({
+            touch: true,
+            interval: false
+        });
+
+        $('.carousel-indicators li:first-child').addClass('active');
+
+        var $carousel = $('.carousel');
+        $carousel.carousel();
+
+        $carousel.bind('slide.bs.carousel', function (e) {
+            var current=$(e.target).find('.carousel-item.active');
+            $('.carousel-indicators li').removeClass('active')
+            
+            var indx=$(current).index();
+            console.log(indx);
+            if((indx+2)>$('.carousel-indicators li').length)
+                indx=-1
+            $('.carousel-indicators li:nth-child('+(indx+2)+')').addClass('active');
+            
+        });
+     
+    </script>
+</body>
+</html>
